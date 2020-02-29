@@ -1,0 +1,345 @@
+/*zerando o hmtl no espaçamento e borda*/
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+/*foemando o html e body*/
+html, 
+body{
+    height: 100%;
+}
+
+/*formatando o tamanho e a fonte da letras no html*/
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #8cc6f8 0%,#607eec 100% );
+    font-size: 10px;
+}
+
+/*Torna o elemento um grid container e definindo as propriedades*/
+body{
+    display: grid;
+    place-items: center;
+}
+
+/*monta o tamanho do conteiner onde motara os textos e com grupos e cor*/
+#chat-container {
+    display: grid;
+    grid: 'search-container chat-title' 71px
+          'conversation-list chat-messa-list' 1fr
+          'news-message-container chat-form' 78px
+          / 275px 1fr;
+    min-width: 800px;
+    max-width: 1000px;
+    max-height: 800px;
+    width: 100%;
+    height: 95vh;
+    background: rgb(219, 191, 191);
+    border-radius: 10px;
+
+}
+
+/*cor da primeira fileira do grid*/
+#search-container, 
+#conversation-list, 
+#news-message-container{
+    background: #9494f3;
+}
+
+/*tamnhao do espaçamento e semaração de contatos*/
+#search-container{
+    display: grid;
+    align-items: center;
+    padding: 0 10px 10px;
+    grid-area: search-container;
+    border-radius: 10px 0 0 0;
+    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+/*cor da letra e espaçamento do campo procura */
+#search-container input{
+    color: rgb(24, 20, 20);
+    outline: none;
+    font-weight: bold;
+    border-radius: 20px;
+    height: 30px;
+    border: 0;
+    padding-left: 48px;
+    padding-right: 20px;
+    font-size: 1.4rem;
+    background: url('imag/search.png') no-repeat rgba(255,255,255, 0.3);
+    background-position: 15px center;
+    background-size: 20px 20px;
+}
+
+/*cor do search*/
+#search-container input::placeholder{
+    color: rgb(240, 233, 233);
+    font-weight: bold;    
+}
+
+/*para subir e descer quando tem muita na lista*/
+#conversation-list{
+    grid-area: conversation-list;
+    overflow: scroll;
+}
+
+/*cor e tamanho das lestras de contato da lista*/
+.conversation{
+    display: grid;
+    grid-template-columns: 48px 1fr max-content;
+    grid-gap: 10px;
+    color:rgb(17, 1, 1);
+    font-size: 1.3rem;
+    border-bottom: 1px solid #eaeaf7;
+    padding: 20px 20px 20px 15px;
+}
+
+/*cor de quando passa o mause na lista*/
+#conversation.active, 
+.conversation:hover{
+    background: #2327eb;
+}
+
+/*marcar quando o mause passar em cima dos contatos*/
+.conversation:hover{
+    cursor: pointer;
+}
+
+/*tamanhos das fotos dos contatos e o formato*/
+.conversation > img{
+    grid-row: span 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+/*Tamanhos, cor, formato das letras dos nomes dos contatos*/
+.title-text{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/*Tamanhos data dos contatos*/
+.create-date{
+    color: rgb(12, 2, 2);
+    font-size: 1rem;
+}
+
+/*Tamanhos dos nomes dos contatos*/
+.conversation-message{
+    grid-column: span 2;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/*icone de mais tamanho, cor e bordas*/    
+#news-message-container{
+    display: grid;
+    grid: 40px / 40px;
+    align-content: center;
+    grid-area: news-message-container;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 0px 10px;
+    padding: 0 15px;
+}
+
+/*cor da letra dentro so search*/
+#news-message-container a{
+    display: grid;
+    place-content: center center;
+    background: rgb(74, 75, 80);
+    border-radius: 95%;
+    color: #04081b;
+    text-decoration: none;
+    font-size: 3.6rem;
+
+}
+
+/*cor de fundo */
+#chat-title, 
+#chat-form{
+    background: rgb(34, 22, 161);
+}
+
+/*tamanho, cor e  espaçamento do menu*/
+#chat-title{
+    display: grid;
+    grid: 36px / 1fr 36px; 
+    align-content: center;
+    align-items: center;
+    grid-area: chat-title;
+    color: #ee1f1f;
+    font-weight: bold;
+    font-size: 2.0rem;
+    border-radius: 0 10px 0 0;
+    box-shadow: 0 1px 3px -1px rgba(116, 14, 14, 0.75);
+    padding: 0 15px;
+}
+
+/*montagem da lista do menu*/
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/*para a lista flutuar a esquerda no container*/
+li {
+    float: left;
+}
+
+ /*tamanho e cor da lista acima */ 
+li a {
+    display: block;
+    color: #eee;
+    text-align: center;
+    padding: 17px;
+    text-decoration: none;
+}
+
+/*cor quando passar o mause sobre a lista*/  
+li a:hover {
+    background-color: #9dabce;
+}
+
+/*mostra a mudança quando o mause passar sobre a lista e tamanho da borda */
+#chat-title > img{
+    cursor: pointer;
+    border: 95%;
+       
+}
+
+/*tamanho e cor da imagem de contato onde fica a lista*/
+.pes_img{
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/*espaçamento da caixa de texto */
+#chat-messa-list{
+    grid-area: chat-messa-list;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 25px;
+    overflow: scroll;
+}
+
+/*tamnho da letra da caixa de texto */
+.message-row{
+    display: grid;
+    grid-template-columns: 70%;
+    margin-bottom: 20px;
+}
+
+/*montando uma grid container*/
+.message-content{
+    display: grid;
+}
+
+/*justifincando o iten em uma grid na linha final*/
+.you-message{
+    justify-content: end;
+}
+
+/*justifincando o iten em uma grid na linha final*/
+.you-message .message-content{
+    justify-items: end;
+}
+
+/*justifincando o iten em uma grid na linha partida*/
+.other-message{
+    justify-items: start;
+}
+
+/*dimensionamento e tamanho dos espaçamento montado na grid*/
+.other-message .message-content{
+    grid-template-columns: 48px 1fr;
+    grid-column-gap: 15px;
+}
+
+/*tamanho da foto do contanto dentro da caixa de mensagem*/
+.message-row img{
+    border-radius: 75%;
+    grid-row: span 2;
+    width: 20px;
+}
+
+/*tamanho do texto e da margin*/
+.message-text{
+    padding: 9px 14px;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+}
+
+/*cor e tamanho do texto abaixo que diz date*/
+.message-line{
+    font-size: 1.3rem;
+    color: rgb(150, 93, 93);
+}
+
+/*cor da bordas de texto da caixa de mensagem */
+.you-message .message-text{
+    background: #0b0eca3f;
+    color: rgb(114, 76, 76);
+    border: 1px solid #0b0eca3f;
+    border-radius: 14px 14px 0 14px;
+}
+
+/*cor e tamanho da bordas de texto da caixa de mensagem */
+.other-message .message-text{
+    background: #0305582c;
+    color: #111;
+    border: 1px solid #0305582c;
+    border-radius: 14px 14px 14px 0;
+}
+
+/*cor e tamanho da bordas das letras de texto da caixa de mensagem type de mensagem*/
+#chat-form{
+    display: grid;
+    grid: 20px / 20px 1fr;
+    align-content: center;
+    align-items: center;
+    grid-gap: 15px;
+    grid-area: chat-form;
+    border-radius: 0 0 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/*tamanho da imagem do clips ou type*/
+.clip_img{
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+}
+
+#chat-form input{
+    outline: none;
+    padding: 10px;
+    border: 2px solid #ddd;
+    color: rgb(8, 22, 100);
+    border-radius: 6px;
+    font-size: 1.4rem;
+}
+
+/*barra de rolagem */
+::-webkit-scrollbar{
+    display: none;
+}
+
